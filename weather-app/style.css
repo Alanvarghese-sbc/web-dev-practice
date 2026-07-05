@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(141, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+    background-color: rgb(251, 251, 251);
+    width: 90%;
+    max-width: 350px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 20px 0px rgb(70, 232, 164);
+
+}
+
+.search-box{
+ 
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin: 35px 0;
+}
+
+#cityInput,
+#search-btn{
+    padding: 10px 16px;
+    border-radius: 10px;
+    /* margin: 20px 0px; */
+}
+
+#cityInput{
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: box-shadow 0.3s, border-color 0.3s;
+
+    
+}
+
+#cityInput:focus{
+    /* background-color: rgb(207, 206, 228); */
+    outline: none;
+    /* border-color: royalblue; */
+    box-shadow: 0 0 5px rgba(65,105,225,.4);
+    border-color: royalblue;
+
+}
+
+#search-btn{
+    background-color: rgb(31, 244, 88);
+    transition: background-color 0.3s, 
+                box-shadow  0.3s,
+                transform 0.5s;
+    border: none;
+}
+
+#search-btn:hover{
+
+    cursor: pointer;
+    background-color: rgb(22, 230, 133);
+    transform: scale(1.03) translateY(-2px);
+    
+}
+
+#search-btn:active{
+    transform: scale(.97);
+}
+
+h1{
+    font-size:30px;
+}
+.weather-card{
+    padding: 20px;
+    /* border: 2px solid; */
+}
+
+#temperature,h3{
+    font-size: 50px;
+}
+#weatherIcon{
+    width: 100px;
+    margin: 15px 0;
+}
+
+h2,h3,p{
+    margin: 15px 0;
+}
+
+.details{
+    /* border: 2px solid; */
+    /* padding-bottom: 10px ; */
+    display: flex;
+    /* gap:15px; */
+    justify-content: space-between;
+}
+
+.detail-box{
+    flex: 1;
+    /* border: 2px solid; */
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 15px;  
+}
+
+#errorMessage{
+    color: red;
+    margin-top: 10px;
+}

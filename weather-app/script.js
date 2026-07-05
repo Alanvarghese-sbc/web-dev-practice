@@ -25,7 +25,8 @@ async function searchWeather(city) {
     try{
             // console.log(`You searched for : ${city}`);
             // cityName.textContent = city;
-        
+            btn.textContent = "Loading";
+            btn.disabled = true;
             const response = await fetch(url);
             const data = await response.json();
             if(data.error){
@@ -44,7 +45,7 @@ async function searchWeather(city) {
         
             weather.textContent = data.current.condition.text;
         
-            weatherIcon.src = data.current.condition.icon;
+            weatherIcon.src = `https:${data.current.condition.icon}`;
             weatherIcon.alt = data.current.condition.text;
         
             humidity.textContent = `${data.current.humidity}%`;
@@ -60,6 +61,9 @@ async function searchWeather(city) {
 
         console.log(error);
         errorMessage.textContent = "Unable to connect. Please check your internet connection.";
+    }finally{
+        btn.textContent   = "Search";
+        btn.disabled = false;
     }
 
 }
@@ -71,5 +75,13 @@ btn.addEventListener("click", ()=>{
 
     
 });
+
+cityInput.addEventListener("keydown", (event) =>{
+
+    if(event.key === "Enter"){
+        const city = cityInput.value.trim();
+        searchWeather(city);
+    }
+})
 
 // http://api.weatherapi.com/v1/current.json?key=apikey&q=kochi&aqi=no
