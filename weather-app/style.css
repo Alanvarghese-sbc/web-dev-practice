@@ -58,11 +58,13 @@ body{
 }
 
 #search-btn{
+
     background-color: rgb(31, 244, 88);
     transition: background-color 0.3s, 
                 box-shadow  0.3s,
                 transform 0.5s;
     border: none;
+    
 }
 
 #search-btn:hover{
