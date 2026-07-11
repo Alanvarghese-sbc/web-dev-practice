@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <main class="row">
+        <section class="col col-8">
+            <header>
+                <div>🛒 Shopping Cart</div>
+            </header>
+            <section class="cartItems">
+
+                <img src="..." alt="Product Image">
+
+                <div class="productInfo">
+                    <h3>Headphones</h3>
+                    <p>$299</p>
+                </div>
+
+                <div class="quantity">
+                    <button class="minus">-</button>
+                    <span>2</span>
+                    <button class="plus">+</button>
+                </div>
+
+                <p class="subtotal">$598</p>
+
+                <button class="remove">🗑️</button>
+
+            </section>
+        </section>
+
+        <aside class="cartSummary col-4">
+            <h3>Order Summary</h3>
+            <p>Total Items:<span id="totalItems">0</span></p>
+            <p>Total Items: $<span id="totalPrice">0</span></p>
+
+            <button>Checkout</button>
+        </aside>
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
