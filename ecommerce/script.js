@@ -213,3 +213,4 @@ function updateProducts(){
 }
 
 displayProducts(products);
+

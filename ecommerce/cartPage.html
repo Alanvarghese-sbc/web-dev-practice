@@ -12,14 +12,84 @@
 </head>
 
 <body>
-    <main class="row">
-        <section class="col col-8">
-            <header>
-                <div>🛒 Shopping Cart</div>
-            </header>
-            <section class="cartItems">
+    <main class="container py-5">
+        <header class="d-flex mb-3 gap-5 align-items-center">
+            <h1>🛒 Your Shopping Cart</h1>
+            <a href="index.html" class="btn btn-outline-primary">
+                    <i class="bi bi-arrow-left me-2"></i>Continue Shopping
+                </a>
+            
+        </header>
+        <section class="row">
+            <section class="col-lg-8 cartItems">
 
-                <img src="..." alt="Product Image">
+                <!-- Cart Items  -->
+                <!-- <div class="card mb-4">
+                    <div class="card-body cartItems">
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <img src="" alt="">
+                            </div>
+                            <div class="col-md-5">
+                                <h5 class="card-title">Product</h5>
+                                <p class="text-muted">Category : Electronics</p>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input-group">
+
+                                    <button class="btn btn-outline-secondary btn-sm" type="button">-</button>
+                                    <input style="max-width:100px"
+                                        class="form-control form-control-sm text-center quantity-input" value="1"
+                                        type="text">
+                                    <button class="btn btn-outline-secondary btn-sm" type="button">+</button>
+
+                                </div>
+                            </div>
+                            <div class="col-md-2 text-end">
+                                <p class="fw-b subtotal">Price : 00</p>
+                                <p class="fw-b subtotal">Subtotal : 00 </p>
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div> -->
+            </section>
+            <!-- Con -->
+            <aside class="col-lg-4">
+                <div class="card cart-summary p-2">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Order Summary</h5>
+                        <div class="d-flex justify-content-between mb-3">
+                            <!-- <span class="su">Subtotal</span> -->
+                            <span>Subtotal</span>
+                            <span class="subTotalAll">0</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Shipping</span>
+                            <span class="shippingCharge">0</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Tax</span>
+                            <span class="tax">0</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Total</span>
+                            <span class="GrandTotal">0</span>
+                        </div>
+                        <button class="btn btn-primary w-100">
+                            Proceed to Checkout
+                        </button>
+
+                    </div>
+
+                </div>
+            </aside>
+            <!-- <img src="..." alt="Product Image">
 
                 <div class="productInfo">
                     <h3>Headphones</h3>
@@ -34,25 +104,24 @@
 
                 <p class="subtotal">$598</p>
 
-                <button class="remove">🗑️</button>
+                <button class="remove">🗑️</button> -->
 
-            </section>
+
         </section>
 
-        <aside class="cartSummary col-4">
+        <!-- <aside class="cartSummary col-4">
             <h3>Order Summary</h3>
             <p>Total Items:<span id="totalItems">0</span></p>
             <p>Total Items: $<span id="totalPrice">0</span></p>
 
             <button>Checkout</button>
-        </aside>
+        </aside> -->
     </main>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="cart.js"></script>
 </body>
 
 </html>
