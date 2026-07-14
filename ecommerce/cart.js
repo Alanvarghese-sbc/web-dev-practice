@@ -23,6 +23,8 @@ const displayCart = () =>{
             </div>
         </div>`
 
+        updateOrderSummary();
+
         return ;
     }
 
@@ -43,16 +45,16 @@ const displayCart = () =>{
                                 <div class="col-md-2">
                                     <div class="input-group">
     
-                                        <button class="btn btn-outline-secondary btn-sm" type="button">-</button>
-                                        <input style="max-width:100px"class="form-control form-control-sm text-center quantity-input" value="${p.quantity}" type="text" />
-                                        <button class="btn btn-outline-secondary btn-sm" type="button">+</button>
+                                        <button class="btn btn-outline-secondary btn-sm minus" type="button" data-id=${p.id}>-</button>
+                                        <input style="max-width:100px"class="form-control form-control-sm text-center quantity-input" value="${p.quantity}" type="text" disabled/>
+                                        <button class="btn btn-outline-secondary btn-sm plus" type="button" data-id=${p.id}>+</button>
     
                                     </div>
                                 </div>
                                 <div class="col-md-2 text-end">
                                     <p class="fw-bold subtotal">Price : ${p.price}</p>
                                     <p class="fw-bold subtotal">Subtotal : ${p.price*p.quantity}</p>
-                                    <button class="btn btn-sm btn-outline-danger">
+                                    <button class="btn btn-sm btn-outline-danger remove" data-id=${p.id}>
                                         <i class="bi bi-trash"></i>
                                     </button>
     
@@ -91,6 +93,7 @@ const updateOrderSummary = () => {
         `
         shipping = 0;
     }else{
+        if(!subTotal>0) return;
         shippingCharge.textContent = "₹49"
         shipping = 49;
     }
@@ -104,3 +107,61 @@ const updateOrderSummary = () => {
 }
 
 displayCart();
+
+cart.addEventListener("click", (event) =>{
+
+    const button = event.target.closest("button"); 
+    if(!button) return;    
+
+    if(
+        !button.classList.contains("plus") && 
+        !button.classList.contains("minus") && 
+        !button.classList.contains("remove")
+    ) 
+    return;
+
+    const pid = Number(button.dataset.id)
+
+
+    if(button.classList.contains("plus")){
+
+
+        const index = cartProducts.findIndex(p => p.id === pid);
+
+        if(index !== -1){
+            cartProducts[index].quantity++;
+        }
+
+        // localStorage.setItem('cart',JSON.stringify(cartProducts));
+    }else if(button.classList.contains("minus")){
+
+        const index = cartProducts.findIndex(p => p.id === pid);
+
+        if(index === -1) return;
+
+        if (cartProducts[index].quantity > 1){
+
+            cartProducts[index].quantity--;
+        }else{
+            cartProducts.splice(index,1);
+        }
+
+        // localStorage.setItem('cart',JSON.stringify(cartProducts));
+
+    }else if(button.classList.contains("remove")){
+
+        const index = cartProducts.findIndex(p => p.id === pid );
+
+        if(index !== -1){
+            cartProducts.splice(index, 1);
+        }
+
+    }
+    
+    localStorage.setItem("cart",JSON.stringify(cartProducts));
+    displayCart();
+
+
+})
+
+

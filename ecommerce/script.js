@@ -60,7 +60,8 @@ const products = [
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 const cartCount = document.getElementById("cartCount");
-cartCount.textContent = cart.length;
+// cartCount.textContent = cart.length;
+updateCartCount()
 
 
 const productsContainer = document.querySelector(".productsContainer")
@@ -95,9 +96,11 @@ productsContainer.addEventListener("click", (event) =>{
   console.log(cart);
 //convert th object ot string before storing the item so use JSON.stringify
   localStorage.setItem('cart', JSON.stringify(cart))
+  showNotification(`${product.productName} added to the cart!!!`);
 
   console.log(productId);
-  cartCount.textContent = cart.length;
+  // cartCount.textContent = cart.length;
+  updateCartCount();
 
 })
 
@@ -127,7 +130,7 @@ function displayProducts(productList){
                         <h5 class="card-title name" >${product.productName}</h5>
                         <p class="card-text price" >${product.price}</p>
                         <p class="card-text stock" >${product.inStock ? "Instock" : "Out of Stock"}</p>
-                        <button class="btn btn-primary add-to-cart" data-id=${product.id}>Add to Cart</button>
+                        <button class="btn add-to-cart ${product.inStock? "btn-primary" :"btn-secondary"}" data-id=${product.id} ${!product.inStock? "disabled " : ""}> ${product.inStock?"Add to Cart":"Currently Unavailable"}</button>
                     </div>
                 </div>
             </div>
@@ -212,5 +215,27 @@ function updateProducts(){
   displayProducts(updatedProducts);
 }
 
+function showNotification(message){
+
+  const msg = document.getElementById("notification");
+
+  msg.textContent = message;
+  console.log(message);
+  // msg.style.display="block";
+  msg.classList.add("show");
+
+  setTimeout(() =>{
+
+    // msg.style.display="none";
+    msg.classList.remove("show");
+
+  },2000)
+}
+function updateCartCount(){
+    const totalItems = cart.reduce((sum,p) =>{
+        return sum + p.quantity;
+    },0)
+    cartCount.textContent = totalItems
+}
 displayProducts(products);
 
