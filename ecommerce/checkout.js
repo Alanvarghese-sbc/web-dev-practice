@@ -6,6 +6,8 @@ let shippingCharge = document.querySelector(".shippingCharge");
 let taxElement = document.querySelector(".tax");
 let totalElement = document.querySelector(".GrandTotal");
 
+const savedAddress = JSON.parse(localStorage.getItem("shippingAddress"));
+
 function displayCheckOutProducts() {
     checkoutItems.innerHTML = ""
     cartProducts.forEach(p => {
@@ -72,6 +74,7 @@ const updateOrderSummary = () => {
     totalElement.textContent =` ₹${total.toFixed(2)}`;
 }
 
+
 const checkoutForm = document.getElementById("checkoutForm");
 const terms = document.getElementById("terms");
 const saveBtn = document.getElementById("saveBtn");
@@ -132,5 +135,25 @@ paymentBtn.addEventListener("click",() =>{
     window.location.href = "payment.html";
 })
 
+function loadSavedAddress(){
+
+    if(savedAddress){
+        document.getElementById("fullName").value = savedAddress.fullName;
+        document.getElementById("email").value = savedAddress.email;
+        document.getElementById("phoneNumber").value = savedAddress.phoneNumber;
+        document.getElementById("city").value = savedAddress.city;
+        document.getElementById("state").value = savedAddress.state;
+        document.getElementById("zipCode").value = savedAddress.zipCode;
+        terms.checked = true;
+        saveBtn.disabled = false;
+        saveBtn.textContent = "✓ Address Saved"
+        saveBtn.classList.replace("btn-primary", "btn-success");
+    
+        paymentBtn.disabled = false;
+    }
+}
+
+
 
 displayCheckOutProducts();
+loadSavedAddress();
